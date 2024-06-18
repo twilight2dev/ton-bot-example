@@ -43,7 +43,7 @@ app.get("/balance", async (req: any, res: any) => {
   }
 
   const balanceNanoTon = await getBalance(telegramId);
-  const balanceTon = TonWeb.utils.fromNano(balanceNanoTon?.toString());
+  const balanceTon = TonWeb.utils.fromNano(balanceNanoTon?.toString() ?? 0);
   res.json({
     balance: balanceTon,
   });

@@ -64,7 +64,7 @@ bot.onText(/\/deposit|Deposit/i, async (msg) => {
 bot.onText(/\/balance|Balance/i, async (msg) => {
   const chatId = msg.chat.id;
   const balanceNanoTon = await getBalance(chatId);
-  const balanceTon = TonWeb.utils.fromNano(balanceNanoTon?.toString());
+  const balanceTon = TonWeb.utils.fromNano(balanceNanoTon?.toString() ?? 0);
   bot.sendMessage(chatId, `Your balance is ${balanceTon ?? 0} TON.`);
 });
 
