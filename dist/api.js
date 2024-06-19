@@ -42,12 +42,13 @@ app.post("/deposit", (req, res) => {
     });
 });
 app.get("/balance", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    var _a;
     const telegramId = Number(req.query.telegramId);
     if (!telegramId) {
         return res.status(400).json({ error: "Telegram ID is required" });
     }
     const balanceNanoTon = yield (0, db_1.getBalance)(telegramId);
-    const balanceTon = tonweb_1.default.utils.fromNano(balanceNanoTon === null || balanceNanoTon === void 0 ? void 0 : balanceNanoTon.toString());
+    const balanceTon = tonweb_1.default.utils.fromNano((_a = balanceNanoTon === null || balanceNanoTon === void 0 ? void 0 : balanceNanoTon.toString()) !== null && _a !== void 0 ? _a : 0);
     res.json({
         balance: balanceTon,
     });

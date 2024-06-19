@@ -60,9 +60,10 @@ bot.onText(/\/deposit|Deposit/i, (msg) => __awaiter(void 0, void 0, void 0, func
     });
 }));
 bot.onText(/\/balance|Balance/i, (msg) => __awaiter(void 0, void 0, void 0, function* () {
+    var _a;
     const chatId = msg.chat.id;
     const balanceNanoTon = yield (0, db_1.getBalance)(chatId);
-    const balanceTon = tonweb_1.default.utils.fromNano(balanceNanoTon === null || balanceNanoTon === void 0 ? void 0 : balanceNanoTon.toString());
+    const balanceTon = tonweb_1.default.utils.fromNano((_a = balanceNanoTon === null || balanceNanoTon === void 0 ? void 0 : balanceNanoTon.toString()) !== null && _a !== void 0 ? _a : 0);
     bot.sendMessage(chatId, `Your balance is ${balanceTon !== null && balanceTon !== void 0 ? balanceTon : 0} TON.`);
 }));
 const pollTransactions = () => __awaiter(void 0, void 0, void 0, function* () {

@@ -21,7 +21,7 @@ const bot = new TelegramBot(botToken, { polling: true });
 
 bot.onText(/\/start/, async (msg) => {
   const chatId = msg.chat.id;
-  const playUrl = `https://twilight2dev.github.io/flutter-web-test`;
+  const webAppUrl = `https://twilight2dev.github.io/flutter-web-test`;
   await addUser(chatId);
   bot.sendMessage(chatId, "Welcome back! Play the game", {
     reply_markup: {
@@ -29,7 +29,7 @@ bot.onText(/\/start/, async (msg) => {
         [
           {
             text: "Play",
-            web_app: { url: playUrl },
+            web_app: { url: webAppUrl },
           },
         ],
       ],

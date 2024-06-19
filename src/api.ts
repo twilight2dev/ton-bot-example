@@ -15,12 +15,7 @@ const depositAddress = process.env.TON_DEPOSIT_ADDRESS!;
 // Middleware
 app.use(bodyParser.json());
 app.use(cors()); // Enable CORS
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  next();
-});
 
-// POST endpoint to get deposit address and comment
 app.post("/deposit", (req: any, res: any) => {
   console.log("CALL DEPOSIT");
   const { telegramId } = req.body;
